@@ -15,34 +15,59 @@ body {
     align-items: center;
 }
 
-.spritePosition {
+/* .spritePosition {
     margin: 10px 0 0 10px;
     font-size: 0.8em;
-}
+} */
 
 .button {
     width: 140px;
     margin: 10px;
     padding: 10px;
-    background-color: #000000;
+    background-color: #e42929;
     color: rgba(255, 255, 255, 0.87);
     border: 1px solid rgba(255, 255, 255, 0.87);
     cursor: pointer;
     transition: all 0.3s;
+}
 
-    &:hover {
+.button:hover {
         border: 1px solid #0ec3c9;
         color: #0ec3c9;
     }
-
-    &:active {
+.button:active {
         background-color: #0ec3c9;
     }
 
-    /* Disabled styles */
-    &:disabled {
+/* Disabled styles */
+.button:disabled {
         cursor: not-allowed;
         border: 1px solid rgba(255, 255, 255, 0.3);
         color: rgba(255, 255, 255, 0.3);
     }
-}
+
+    #main-screen {
+        display: flex;
+        height: 100vh; /* Full height of the viewport */
+
+    }
+    
+    #game-container {
+        flex: 0 0 70%; /* 70% width */
+        background-color: #464747; /* Background color for the game area */
+        min-width: 300px; /* Optional: set a minimum width */
+        /* padding: 40px; Add padding */
+        position: relative; /* Relative positioning to allow absolute children */
+    
+    }
+    
+    #side-panel {
+        flex: 0 0 30%; /* 30% width */
+        background-color: #332f2f; /* Background color for the side panel */
+        padding: 20px; /* Add padding */
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+        min-width: 200px; /* Optional: set a minimum width */
+    }
+    
+
+    

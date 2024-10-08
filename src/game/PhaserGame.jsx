@@ -51,8 +51,19 @@ export const PhaserGame = forwardRef(function PhaserGame ({ currentActiveScene }
         
     }, [currentActiveScene, ref])
 
+
+
     return (
-        <div id="game-container"></div>
+        <div id="main-screen">
+        <div id="game-container">
+            
+        </div>
+        <div id="side-panel">
+            {/* Side panel content goes here */}
+            <h3>Side Panel</h3>
+            <p>This is where additional UI elements, stats, or controls will go.</p>
+        </div>
+    </div>
     );
 
 });

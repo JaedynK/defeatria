@@ -12,13 +12,30 @@ export class MainMenu extends Scene
 
     create ()
     {
-        this.add.image(512, 384, 'background');
+        const { width, height } = this.scale;
 
-        this.logo = this.add.image(512, 300, 'logo').setDepth(100);
+        // Ensure the game container dimensions match the canvas size
+        this.cameras.main.setBounds(0, 0, width, height); // Set the bounds to the game container
+
+        // Add the background image
+        const background = this.add.image(width / 2, height / 2, 'map');
+
+        // Scale the background to fit the game screen size
+        // Subtract the padding defined in CSS (e.g., 40px from game-container)
+        const padding = 40; // Match this with your CSS padding
+        background.setDisplaySize(width - padding * 2, height - padding * 2);
+
+        // Center the background image
+        background.setOrigin(0.5, 0.5);
+
+        // this.logo = this.add.image(512, 300, 'X').setDepth(100); // Logo removed
 
         this.add.text(512, 460, 'Main Menu', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
+            fontFamily: 'Arial Black', 
+            fontSize: 38, 
+            color: '#ffffff',
+            stroke: '#000000', 
+            strokeThickness: 8,
             align: 'center'
         }).setDepth(100).setOrigin(0.5);
         
@@ -34,39 +51,5 @@ export class MainMenu extends Scene
         }
 
         this.scene.start('Game');
-    }
-
-    moveLogo (reactCallback)
-    {
-        if (this.logoTween)
-        {
-            if (this.logoTween.isPlaying())
-            {
-                this.logoTween.pause();
-            }
-            else
-            {
-                this.logoTween.play();
-            }
-        }
-        else
-        {
-            this.logoTween = this.tweens.add({
-                targets: this.logo,
-                x: { value: 750, duration: 3000, ease: 'Back.easeInOut' },
-                y: { value: 80, duration: 1500, ease: 'Sine.easeOut' },
-                yoyo: true,
-                repeat: -1,
-                onUpdate: () => {
-                    if (reactCallback)
-                    {
-                        reactCallback({
-                            x: Math.floor(this.logo.x),
-                            y: Math.floor(this.logo.y)
-                        });
-                    }
-                }
-            });
-        }
     }
 }
